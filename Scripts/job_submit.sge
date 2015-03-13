@@ -1,0 +1,15 @@
+
+#!/bin/bash	 
+#$ -V						#Inherit the submission environment
+#$ -cwd						# Start job in submission directory
+#$ -N wget_imgages			# Job Name
+#$ -j y						# Combine stderr and stdout
+#$ -o $JOB_NAME.o$JOB_ID	# Name of the output file (eg. myMPI.oJobID)
+#$ -pe 12way 12				# Requests 12 tasks/node, 24 cores total
+#$ -q normal				# Queue name normal
+#$ -l h_rt=10:00:00			# Run time (hh:mm:ss) - 10 hours
+#$ -M tipparat.umrod@utexas.edu					# Address for email notification
+#$ -m be					# Email at Begin and End of job
+python GPimgDownload.py		# Echo commands, use set echo with csh
+
+
