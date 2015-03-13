@@ -8,8 +8,7 @@ BeautifulSoup4 - $ easy_install BeautifulSoup4
 
 =============================================================
 Clone:
-
-
+git clone https://github.com/tumrod/bisque-lungMap.git
 =============================================================
 
 1.  create a virtualenv and fetch bqapi with the CAS option
