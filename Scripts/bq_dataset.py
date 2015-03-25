@@ -26,7 +26,8 @@ WB00000023_00015B.jpg
 # logging in
 sess = loginIplant()
 
-theList = readInFile("/Users/tumrod/Documents/TACC/restore/5tests_gp.txt")
+#theList = readInFile("/Users/tumrod/Documents/TACC/bisque-lungMap/tests/5tests_gp.txt")
+theList = readInFile("/Users/tumrod/Documents/TACC/bisque-lungMap/input/complete_filenames.txt")
 nameList = getFileName(theList, 0,"")
 uri_list = []
 
@@ -38,7 +39,7 @@ for i in range(len(nameList)):
 
 data_service = "http://bovary.iplantcollaborative.org/data_service/" 
 
-datasetname = 'restored_2'
+datasetname = 'full_gene_paint'
 dataset = etree.Element('dataset',name = datasetname)
 for img in uri_list:
 	v = etree.SubElement (dataset, 'value', type='object') 
