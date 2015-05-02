@@ -6,6 +6,7 @@ from bqapi import BQSession
 ###### LOGGING IN #######
 def loginIplant():
 	#HOST= raw_input("host: ")
+	
 	# default: "http://bovary.iplantcollaborative.org/" for iplant bisque
 	HOST="http://bovary.iplantcollaborative.org/"
 

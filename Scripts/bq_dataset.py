@@ -3,49 +3,39 @@ from login import loginIplant
 from bqapi.comm import BQSession, BQCommError
 from bqapi.util import save_blob
 from xml.etree import ElementTree as etree
+from get_list import *
 
-def getFileName(theList,index, word):
-    names = []
-    for i in range(len(theList)):
-        names.append(theList[i][index]+word)
-    return names
+def ds_create_main() :
+	# logging in
+	sess = loginIplant()
 
-#upload
-'''
-FG00000055_00008B.jpg
-ST00000087_00017B.jpg
-EB00000186_00008B.jpg
-HD00000008_00008B.jpg
-WB00000088_00005B.jpg
-EB00000609_00011B.jpg
+	# get the list of annotations
+	theList = getList()
 
-HD00000061_00005B.jpg
-WB00000023_00015B.jpg
-'''
+	# get FileName list to be query, in this case, assuming the first column of the spreadsheet contain filename
+	nameList = getFileName(theList, 0,"")  
 
-# logging in
-sess = loginIplant()
+	uri_list = []
 
-#theList = readInFile("/Users/tumrod/Documents/TACC/bisque-lungMap/tests/5tests_gp.txt")
-theList = readInFile("/Users/tumrod/Documents/TACC/bisque-lungMap/input/complete_filenames.txt")
-nameList = getFileName(theList, 0,"")
-uri_list = []
+	for i in range(len(nameList)):
+	    images = sess.query ('image', tag_query="filename:"+nameList[i])
+	    for image in images:
+	    	#print image.uri
+	    	uri_list.append(image.uri)
 
-for i in range(len(nameList)):
-    images = sess.query ('image', tag_query="filename:"+nameList[i])
-    for image in images:
-    	print image.uri
-    	uri_list.append(image.uri)
+	dataset_name = raw_input("Dataset name: ")
+	create_dataset("http://bovary.iplantcollaborative.org/", dataset_name)
 
-data_service = "http://bovary.iplantcollaborative.org/data_service/" 
+def create_dataset(hostname, datasetname) :
+	data_service = hostname + "data_service/" 
+	dataset = etree.Element('dataset',name = datasetname)
 
-datasetname = 'full_gene_paint'
-dataset = etree.Element('dataset',name = datasetname)
-for img in uri_list:
-	v = etree.SubElement (dataset, 'value', type='object') 
-	v.text = img
-sess.postxml(data_service +"dataset/",dataset)
+	for img in uri_list:
+		v = etree.SubElement (dataset, 'value', type='object') 
+		v.text = img
+	sess.postxml(data_service +"dataset/", dataset)
 
+ds_create_main()
 
 '''
 data_service = "http://bovary.iplantcollaborative.org/data_service/" 
@@ -59,4 +49,5 @@ for d in ds:
 		print v
 	sess.postxml(data_service +"dataset/",dataset)
 '''
+
 

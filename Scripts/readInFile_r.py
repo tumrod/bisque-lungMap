@@ -8,7 +8,7 @@ def readInFile_r(fileName):
                 dataList.append(item[:index])
                 totalList.append(dataList)
                 dataList = []
-                dataList.append(item[index+1:]) # delete this if \n
+                dataList.append(item[index:]) # delete this if \n
             else:
                 dataList.append(item)
     totalList.append(dataList)
