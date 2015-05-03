@@ -14,7 +14,7 @@ import getpass
 import logging
 import datetime
 from bqapi import BQSession
-from get_list *
+from get_list import *
 from login import loginIplant 
 
 # get the list of annotations
@@ -25,6 +25,8 @@ nameList = getFileName(theList, 0,"")
 
 # logging in
 sess = loginIplant()
+
+timestamp = datetime.datetime.now().strftime("%I:%M-%m-%d-%Y")
 
 # go through each image and add annotations for that image from annotation spreadsheet
 for i in range(len(nameList)):

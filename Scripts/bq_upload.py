@@ -4,6 +4,7 @@ from login import loginIplant
 from bqapi.comm import BQSession, BQCommError
 from bqapi.util import save_blob
 from xml.etree import ElementTree as etree
+from get_list import *
 
 def upload_main() :
 	# image path
@@ -24,7 +25,7 @@ def upload_main() :
 		if (usr_annotation == "y") :
 			is_annotation = True
 			done = 1
-		else if (usr_annotation == "n") :
+		elif (usr_annotation == "n") :
 			is_annotation = False
 			done = 1
 		else :
@@ -40,39 +41,37 @@ def upload(sess, ROOT_PATH, LOCAL_FILE_PATH, is_annotation) :
 	if (is_annotation) :
 		# get the list of annotations
 		annotationList = getList()
-
+		print annotationList
 		# get FileName list to be query, in this case, assuming the first column of the spreadsheet contain filename
-		nameList = getFileName(theList, 0,"")  
+		nameList = getFileName(annotationList, 0,"")  
 
+		print LOCAL_FILE_PATH
 		# navigate through the list of file name
-		for image in range(len(LOCAL_FILE_PATH)):
+		for image in range(len(LOCAL_FILE_PATH)+1):
 
 			# create local path of the images
 			iname = LOCAL_FILE_PATH[image][0]
-			#print iname
+			print iname
 			path = ROOT_PATH + "/"+ iname
-			#print path
+			print path
 
 		    # navigate through the annotation list
 			for i in range(len(annotationList)) :
-				if(iname == annotationList[i][0][1:]):
+				print annotationList[i][0]
+				print annotationList[i]
+
+				if(iname == annotationList[i][0]):
 		            
 		            # create the image object
-					resource = etree.Element ('image', name= iname)
-		            
+					#resource = etree.Element ('image', name=iname)
+		        	
 					for j in range(len(annotationList[i])) :
-						# print "name: " + annotationList[0][j] + "\t value: " + annotationList[i][j]
-		                
+						print "name: " + annotationList[0][j] + "\t value: " + annotationList[i][j]
 		                # create the tag as sub element
-						etree.SubElement (resource, 'tag', name=annotationList[0][j], value=annotationList[i][j])
+						#etree.SubElement (resource, 'tag', name=annotationList[0][j], value=annotationList[i][j])
 		            
-		            # save/ post the xml back
-					r = save_blob(sess, path, resource=resource)
-		            
-					if r is None:
-						print 'Error uploading'
-						#r is a created metadata document in etree form
-					uri = r.get('uri')
+					
+					
 
 	else :
 		for image in range(len(LOCAL_FILE_PATH)):

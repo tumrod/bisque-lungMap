@@ -1,2 +1,2 @@
 test_img1.png
-test_img2.png
+test_img2.jpeg

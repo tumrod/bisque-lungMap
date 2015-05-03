@@ -13,20 +13,23 @@ def ds_create_main() :
 	theList = getList()
 
 	# get FileName list to be query, in this case, assuming the first column of the spreadsheet contain filename
-	nameList = getFileName(theList, 0,"")  
+	nameList = getFileName(theList, 0,"")
 
-	uri_list = []
-
-	for i in range(len(nameList)):
-	    images = sess.query ('image', tag_query="filename:"+nameList[i])
-	    for image in images:
-	    	#print image.uri
-	    	uri_list.append(image.uri)
-
+	uri_list = get_uri_list(sess, nameList)
 	dataset_name = raw_input("Dataset name: ")
-	create_dataset("http://bovary.iplantcollaborative.org/", dataset_name)
+	create_dataset(sess,"http://bovary.iplantcollaborative.org/", dataset_name, uri_list)
 
-def create_dataset(hostname, datasetname) :
+def get_uri_list(sess, nameList) :
+    uri_list = []
+        
+    for i in range(len(nameList)):
+        images = sess.query ('image', tag_query="filename:"+nameList[i])
+        for image in images:
+            #print image.uri
+            uri_list.append(image.uri)
+    return uri_list
+
+def create_dataset(sess, hostname, datasetname, uri_list) :
 	data_service = hostname + "data_service/" 
 	dataset = etree.Element('dataset',name = datasetname)
 
