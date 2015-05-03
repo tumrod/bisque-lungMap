@@ -19,7 +19,9 @@ $ pip install -i http://biodev.ece.ucsb.edu/py/bisque/dev bqapi[CAS]
 2. Move necessary packages into site-packages
 (bqapi) $ sh setup_src.sh
 
-3. To run a python script, make sure to activate the virtualenv 
+3. To run a python script, make sure that you have activated the virtualenv
+[it should look like (bqapi) $ ]
+
 $ source bqapi/bin/activate 
 
 4. Run the script file
