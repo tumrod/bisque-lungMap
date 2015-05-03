@@ -1,67 +1,36 @@
-from readInFile_r import readInFile_r
 from login import loginIplant 
 from bqapi.comm import BQSession, BQCommError
-from bqapi.util import save_blob
-from xml.etree import ElementTree as etree
 
-def getFileName(theList,index, word):
-    names = []
-    for i in range(len(theList)):
-        names.append(theList[i][index]+word)
-    return names
+def main() :
+	sess = loginIplant()
+	data_service = "http://bovary.iplantcollaborative.org/data_service/" 
+	query_type = raw_input("query type [dataset, image]: ")
 
+	query_result = bq_query(sess, data_service, query_type)
+	val_to_return = raw_input("return as a list of [uri, filename, time]: ")
+	returned_val = bq_query_result(query_result, val_to_return)
+	print returned_val
 
-# logging in
-sess = loginIplant()
+def bq_query(session, data_service, query_type) :
+	if (query_type == "dataset") :
+		keyword = raw_input("datset name: ") 
+		ds = session.query('dataset',name=keyword)
+		return ds
 
-theList = readInFile_r("/Users/tumrod/Documents/TACC/bisque-lungMap/analysis/44_FinalCandidate_Normalized.txt")
-geneList = getFileName(theList, 1,"")
-uri_list = []
-genes_in_gp = []
-is_in_gp = False
-not_in_gp = []
-img_name_list =[]
-info_list = []
-info_list.append(theList[0])
-info_list.append(theList[1])
-for i in range(2,len(geneList)):
-    images = sess.query ('image', tag_query=geneList[i])
-    #print geneList[i] + "\n"
-    for image in images:
-        img_name_list.append(image.name)
-        is_in_gp = True
-        genes_in_gp.append(geneList[i])
-        uri_list.append(image.uri)
-        
-        info_list.append(theList[i])
-    if(is_in_gp == False) :
-        not_in_gp.append(geneList[i])
-    is_in_gp = False
+	else :
+		tag_name = raw_input("tag name [i.e. filename]: ")
+		tag_val = raw_input("tag value [add * at the end for wild type]: ")
+		images = session.query ('image', tag_query=tag_name+":"+tag_val)
+		return images
 
-print info_list
-print img_name_list
-print genes_in_gp
-f = open('/Users/tumrod/Documents/TACC/bisque-lungMap/analysis/13_Final_Normalized_heatmap.txt', 'w')
-for k in range(len(info_list)):
-    for j in range(len(info_list[k])):
-        s = info_list[k][j] + "\t"
-        f.write(s)
-    f.write("\n")
-'''
-
-data_service = "http://bovary.iplantcollaborative.org/data_service/" 
-datasetname = '44_HCR_Probe_HeatMap'
-dataset = etree.Element('dataset',name = datasetname)
-for img in uri_list:
-    v = etree.SubElement (dataset, 'value', type='object') 
-    v.text = img
-sess.postxml(data_service +"dataset/",dataset)
-'''
-
-'''
-print uri_list
-print genes_in_gp
-print not_in_gp
-'''
-
-
+def bq_query_result(query, value) :
+	return_list = []
+	for item in query:
+		if(value == "uri") :
+			return_list.append(item.uri)
+		elif(value == "filename") :
+			return_list.append(item.name)
+		elif(value == "time") :
+			return_list.append(item.ts)
+	return return_list
+main()
