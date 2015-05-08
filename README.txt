@@ -31,3 +31,8 @@ $ source bqapi/bin/activate
 
 ==============================================================
 
+Tips: 
+For pip, you may need to use: sudo easy_install pip
+You may need to use sudo at start of other commands if there are permission issues.
+For virtualenv, you may need to specify the python path with: -p <python path>
+
