@@ -7,5 +7,3 @@ for i in ./extra_src/*/;
 do
 	mv "$i" bqapi/lib/python2.7/site-packages/
 done
-
-rm -r extra_src
