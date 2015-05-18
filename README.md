@@ -1,5 +1,5 @@
 # bisque-lungMap
-This
+[Bisque (Bio-Image Semantic Query User Environment)](http://bioimage.ucsb.edu/bisque)
 
 
 ## Requirements:
@@ -8,7 +8,7 @@ This
 - pip
 - BeautifulSoup4
 
-using easy_install or pip to install
+###### Using easy_install or pip to install
 ```
 $ easy_install virtualenv
 $ easy_install pip
