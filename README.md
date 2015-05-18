@@ -36,17 +36,17 @@ $ source bqapi/bin/activate
 (bqapi) $ pip install -i http://biodev.ece.ucsb.edu/py/bisque/dev bqapi[CAS]
 ```
 
-### 4. Move necessary packages into site-packages
+#### 4. Move necessary packages into site-packages
 ```
 (bqapi) $ sh setup_src.sh
 ```
 
-### 5. Run the script file
+#### 5. Run the script file
 ```
 (bqapi) $ python <script_file.py>
 ```
 
-## Tips: 
+### Tips: 
 - You may need to use sudo at start of other commands if there are permission issues.
 - You can deactivate the virtualenv by $ deactivate 
 
