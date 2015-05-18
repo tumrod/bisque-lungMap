@@ -61,5 +61,9 @@ $ source bqapi/bin/activate
 
 ### Tips: 
 - You may need to use sudo at start of other commands if there are permission issues.
-- You can deactivate the virtualenv by $ deactivate 
+- You can deactivate the virtualenv by 
+```
+(bqapi) $ deactivate 
+```
+
 
