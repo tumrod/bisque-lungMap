@@ -1,3 +1,14 @@
+#############################################################################
+## Read in a tab-delimited file                                            ##
+## Edited: December 15, 2014                                               ## 
+##                                                                         ##
+#############################################################################
+
+###############################################################################
+## Readin a tab-delimited file and return a list of values separated by tabs ##
+## [When each line separated by \r instead of \n]                            ##
+###############################################################################
+
 def readInFile_r(fileName):
     totalList = []
     dataList = []

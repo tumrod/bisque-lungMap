@@ -1,3 +1,14 @@
+#############################################################################
+## Create Dataset on iplant/bisque                                         ##
+## Edited 2: May 2, 2015                                            	   ##                                        ##
+##                                                                         ##
+#############################################################################
+
+###############################################################################
+## Create a dataset from existed images in Bisque                            ##
+##                                                                           ##
+###############################################################################
+
 from readInFile import readInFile
 from login import loginIplant 
 from bqapi.comm import BQSession, BQCommError
@@ -19,16 +30,17 @@ def ds_create_main() :
 	dataset_name = raw_input("Dataset name: ")
 	create_dataset(sess,"http://bovary.iplantcollaborative.org/", dataset_name, uri_list)
 
+# get a list of uri from query by filename
 def get_uri_list(sess, nameList) :
     uri_list = []
         
     for i in range(len(nameList)):
         images = sess.query ('image', tag_query="filename:"+nameList[i])
         for image in images:
-            #print image.uri
             uri_list.append(image.uri)
     return uri_list
 
+# create a dataset
 def create_dataset(sess, hostname, datasetname, uri_list) :
 	data_service = hostname + "data_service/" 
 	dataset = etree.Element('dataset',name = datasetname)

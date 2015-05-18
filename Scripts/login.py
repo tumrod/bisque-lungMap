@@ -1,3 +1,10 @@
+#############################################################################
+## Log-in to iplantcollaborative.org/bisque with CAS initialization        ##
+## Edited: December 15, 2014                                               ## 
+## Credited to Kris Kvilekval and Dmitry Fedorov                           ##
+#############################################################################
+
+
 import getpass
 import logging
 from bqapi import BQSession

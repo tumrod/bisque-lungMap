@@ -7,7 +7,7 @@
 
 ###############################################################################
 ## Annotate images from the annotation/tags list                             ##
-##                                                                           ##
+## Credited to Kris Kvilekval and Dmitry Fedorov                             ##
 ###############################################################################
 
 import getpass
