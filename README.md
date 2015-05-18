@@ -6,7 +6,8 @@ bisque-lungMap repository has 2 parts to it:
 We are using [Bisque's](bisque.iplantcollaborative.org) iPlantcollaborative version, instead of the original [Bisque](http://bioimage.ucsb.edu/bisque) from ucsb because we would like to utilize other platforms and tools from [iPlantCollaborative](iplantcollaborative.org) as well as Bisque. In addition, we utilize [TACC's](tacc.utexas.edu) technology to facilitate with large dataset we have.
 
 
-## Requirements:
+## Getting started
+### Requirements:
 - python 2.7
 - virtualenv 
 - pip
@@ -22,30 +23,30 @@ $ easy_install BeautifulSoup4
 (Note - for installations, you may need to use sudo. New versions of python may have pip already installed.)
 
 
-## Getting it to work
+### Step-by-step
 
-#### 1. Clone this repository
+#### Step 1: Clone this repository
 ```
 $ git clone https://github.com/tumrod/bisque-lungMap.git
 ```
 
-#### 2. Create a virtualenv  (you may need to specify the python path with: -p <python path>)
+#### Step 2: Create a virtualenv  (you may need to specify the python path with: -p <python path>)
 ```
 $ virtualenv bqapi
 $ source bqapi/bin/activate 
 ```
 
-#### 3. Fetch bqapi with the CAS option
+#### Step 3: Fetch bqapi with the CAS option
 ```
 (bqapi) $ pip install -i http://biodev.ece.ucsb.edu/py/bisque/dev bqapi[CAS]
 ```
 
-#### 4. Move necessary packages into site-packages
+#### Step 4: Move necessary packages into site-packages
 ```
 (bqapi) $ sh setup_src.sh
 ```
 
-#### 5. Run the script file
+#### Step 5: Run the script file
 ```
 (bqapi) $ python <script_file.py>
 ```
