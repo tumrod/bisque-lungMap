@@ -9,11 +9,11 @@ This
 - BeautifulSoup4
 
 ### using easy_install or pip to install
-'''
+```
 $ easy_install virtualenv
 $ easy_install pip
 $ easy_install BeautifulSoup4
-'''
+```
 
 (Note - for installations, you may need to use sudo. New versions of python may have pip already installed.)
 
