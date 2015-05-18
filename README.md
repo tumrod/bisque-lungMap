@@ -5,7 +5,7 @@
 
 We are using [Bisque's](bisque.iplantcollaborative.org) iPlantcollaborative version, instead of the original [Bisque](http://bioimage.ucsb.edu/bisque) from ucsb because we would like to utilize other platforms and tools from [iPlantCollaborative](iplantcollaborative.org) as well as Bisque. In addition, we utilize [TACC's](tacc.utexas.edu) technology to facilitate with large dataset we have.
 
-## Why are we using it?
+## Why using it?
 Bisque's web application works greats for small dataset (like 100-300 images). However, it can take awhile to add annotations/tags to each image by hand. In addition, storing the metadata in a spreadsheet can be helpful.
 
 ### Features:
@@ -36,7 +36,9 @@ $ easy_install BeautifulSoup4
 $ git clone https://github.com/tumrod/bisque-lungMap.git
 ```
 
-#### Step 2: Create a virtualenv  (you may need to specify the python path with: -p <python path>)
+#### Step 2: Create a virtualenv  
+you may need to specify the python path with: -p < python path >
+
 ```
 $ virtualenv bqapi
 $ source bqapi/bin/activate 
