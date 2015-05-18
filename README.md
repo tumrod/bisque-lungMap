@@ -8,7 +8,7 @@ This
 - pip
 - BeautifulSoup4
 
-### using easy_install or pip to install
+using easy_install or pip to install
 ```
 $ easy_install virtualenv
 $ easy_install pip
@@ -20,18 +20,18 @@ $ easy_install BeautifulSoup4
 
 ## Getting it to work
 
-### 1. Clone this repository
+#### 1. Clone this repository
 ```
 $ git clone https://github.com/tumrod/bisque-lungMap.git
 ```
 
-### 2. Create a virtualenv  (you may need to specify the python path with: -p <python path>)
+#### 2. Create a virtualenv  (you may need to specify the python path with: -p <python path>)
 ```
 $ virtualenv bqapi
 $ source bqapi/bin/activate 
 ```
 
-### 3. Fetch bqapi with the CAS option
+#### 3. Fetch bqapi with the CAS option
 ```
 (bqapi) $ pip install -i http://biodev.ece.ucsb.edu/py/bisque/dev bqapi[CAS]
 ```
