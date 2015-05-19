@@ -3,7 +3,7 @@
 - Bio-Image Semantic Query User Environment aka [Bisque](http://bioimage.ucsb.edu/bisque), a tool we used to store the lung images and their tags/annotations. 
 - [lungMAP](http://lungmap.net/) is an on-going comprehensive lung development web-based atlas project. This repository is a part of data and metadata management process to create a molecular atlas of the mammalian lung.
 
-We are using [Bisque's](bisque.iplantcollaborative.org) iPlantcollaborative version, instead of the original [Bisque](http://bioimage.ucsb.edu/bisque) from ucsb because we would like to utilize other platforms and tools from [iPlantCollaborative](iplantcollaborative.org) as well as Bisque. In addition, we utilize [TACC's](tacc.utexas.edu) technology to facilitate with large dataset we have.
+We are using [Bisque's](http://bisque.iplantcollaborative.org) iPlantcollaborative version, instead of the original [Bisque](http://bioimage.ucsb.edu/bisque) from ucsb because we would like to utilize other platforms and tools from [iPlantCollaborative](iplantcollaborative.org) as well as Bisque. In addition, we utilize [TACC's](http://tacc.utexas.edu) technology to facilitate with large dataset we have.
 
 ## Why using it?
 Bisque's web application works greats for small dataset (like 100-300 images). However, it can take awhile to add annotations/tags to each image by hand. In addition, storing the metadata in a spreadsheet can be helpful.
