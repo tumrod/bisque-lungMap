@@ -1,0 +1,32 @@
+# This file is named "travis.sample.yml".
+# Rename it ".travis.yml".
+# http://docs.travis-ci.com/user/build-configuration/
+
+language: python
+sudo: required
+
+python:
+    - "2.7"
+
+before_install:
+    - sudo apt-get update
+
+install:
+    - pip install --upgrade pip
+    - pip install -r requirements.txt
+
+before_script:
+    - uname -a
+    - printenv
+    - pip --version
+    - pip freeze
+    - python --version
+    - coverage --version
+    - python -c "import numpy; print(numpy.__version__)"
+
+script:
+    - date
+    - ls -al
+    - touch bisque-lungMap.log
+    - ls -al
+    - make check

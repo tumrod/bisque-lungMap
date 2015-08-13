@@ -16,16 +16,14 @@ Bisque's web application works greats for small dataset (like 100-300 images). H
 
 ## Getting started
 #### Requirements:
-- python 2.7
+- Python 2.7
 - virtualenv 
 - pip
-- BeautifulSoup4
 
 ###### Using easy_install or pip to install
 ```
 $ easy_install virtualenv
 $ easy_install pip
-$ easy_install BeautifulSoup4
 ```
 
 (Note - for installations, you may need to use sudo. New versions of python may have pip already installed.)
@@ -49,15 +47,27 @@ $ source bqapi/bin/activate
 (bqapi) $ pip install -i http://biodev.ece.ucsb.edu/py/bisque/dev bqapi[CAS]
 ```
 
-#### Step 4: Move necessary packages into site-packages
+#### Step 4: Install required packages
 ```
-(bqapi) $ sh setup_src.sh
+(bqapi) $ pip install -r requirements.txt
 ```
 
-#### Step 5: Run the script file
+#### Step 5: Testing (current working directory should be bisque-lungMap/)
+```
+(bqapi) $ pwd
+~/bisque-lungMap
+
+(bqapi) $ make test
+
+```
+
+#### Step 6: Run the script file
 ```
 (bqapi) $ python <script_file.py>
+or
+(bqapi) $ make <annotation | dataset | tag | query>
 ```
+
 
 ### Tips: 
 - You may need to use sudo at start of other commands if there are permission issues.
