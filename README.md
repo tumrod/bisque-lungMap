@@ -1,6 +1,6 @@
-# bisque-lungMap
-![build-status](https://travis-ci.org/tumrod/bisque-lungMap.svg?branch=master)
-##### bisque-lungMap repository has 2 parts to it: 
+# bisque-spreadsheet
+![build-status](https://travis-ci.org/tumrod/bisque-spreadsheet.svg?branch=master)
+##### bisque-spreadsheet repository has 2 parts to it: 
 - Bio-Image Semantic Query User Environment aka [Bisque](http://bioimage.ucsb.edu/bisque), a tool we used to store the lung images and their tags/annotations. 
 - [lungMAP](http://lungmap.net/) is an on-going comprehensive lung development web-based atlas project. This repository is a part of data and metadata management process to create a molecular atlas of the mammalian lung.
 
